@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: weather-push-service
+
+qweather:
+  cityNames: ${Q_WX_CITY_NAMES:鼓楼区}
+  cityCodes: ${Q_WX_CITY_CODES:101230106}
+  host: ${Q_WX_HOST:""}
+  privateKey: ${Q_WX_PRIVATE_KEY:""}
+  keyId: ${Q_WX_KEY_ID:""}
+  projectId: ${Q_WX_PROJECT_ID:""}
+
+wx:
+  appId: ${WX_APPID:""}
+  appSecret: ${WX_APP_SECRET:""}
+  tmplId: ${WX_TMPL_ID:""}
+
+
+  
