@@ -1,6 +1,5 @@
 package com.example.utils;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.*;
 import org.springframework.util.MultiValueMap;
@@ -27,10 +26,10 @@ public class RestClient {
             if (HttpStatus.OK.equals(tokenEntity.getStatusCode())) {
                 return tokenEntity.getBody();
             } else {
-                log.error("GET: {}, Result:{}", uri, tokenEntity);
+                log.error("GET Result:{}", tokenEntity);
             }
         } catch (Exception e) {
-            log.error("GET: {}", uri, e);
+            log.error("GET: ", e);
         }
         return null;
     }
@@ -40,18 +39,16 @@ public class RestClient {
         try {
             headers = Optional.ofNullable(headers).orElse(new HttpHeaders());
 
-            ObjectMapper  mapper = new ObjectMapper();
-            System.out.println(mapper.writeValueAsString(json));
 
             HttpEntity<Object> entity = new HttpEntity<>(json, headers);
             ResponseEntity<T> tokenEntity = restTemplate.exchange(uri, HttpMethod.POST, entity, clazz);
             if (HttpStatus.OK.equals(tokenEntity.getStatusCode())) {
                 return tokenEntity.getBody();
             } else {
-                log.error("POST: {}, Result:{}", uri, tokenEntity);
+                log.error("Result:{}", tokenEntity);
             }
         } catch (Exception e) {
-            log.error("GET: {}", uri, e);
+            log.error("GET: ", e);
         }
         return null;
     }

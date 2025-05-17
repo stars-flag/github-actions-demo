@@ -58,7 +58,7 @@ public class WeatherPushTask {
 
         // 4. 推送天气信息
         for (String user : userList) {
-            log.info("推送{}天气信息", user);
+            log.info("推送天气信息");
             WxClient.pushWeather(token, user, wxProp.getTmplId(), weathers);
         }
 
