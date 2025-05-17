@@ -1,36 +1,36 @@
 name: Weather Push
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
-  schedule:
+  #schedule:
     # Minute [0,59] Hour [0,23]  Day of the month [1,31]  Month of the year [1,12]  Day of the week ([0,6] with 0=Sunday)
-    - cron:  '0 23 * * *'
+    #- cron:  '0 23 * * *'
+  workflow_dispatch
 
 env:
   POM_XML_DIRECTORY: '.'                    # set this to the directory which contains pom.xml file
-	
-	
+
 jobs:
   example-job:
     runs-on: ubuntu-latest
-	steps:
-	  - name: 'Retrieve secret'
-	    env:
-              Q_WX_HOST: ${{ secrets.Q_WX_HOST }}
-              Q_WX_PRIVATE_KEY: ${{ secrets.Q_WX_PRIVATE_KEY }}
-              Q_WX_KEY_ID: ${{ secrets.Q_WX_KEY_ID }}
-              Q_WX_PROJECT_ID: ${{ secrets.Q_WX_PROJECT_ID }}
-              WX_APPID: ${{ secrets.WX_APPID }}
-              WX_APP_SECRET: ${{ secrets.WX_APP_SECRET }}
-              WX_TMPL_ID: ${{ secrets.WX_TMPL_ID }}
-	  - name: 'Checkout GitHub Action'
-	    uses: actions/checkout@v4
-	  - name: 'Setup Java Sdk'
-	    uses: actions/setup-java@v4
-	    with:
-              java-version: '8'
-              distribution: 'temurin'
-	  - name: 'package and run'
-            shell: cd weather-push
-            run: |
-              mvn clean package
-              pwd
+  steps:
+    - name: 'Retrieve secret'
+      env:
+        Q_WX_HOST: ${{ secrets.Q_WX_HOST }}
+        Q_WX_PRIVATE_KEY: ${{ secrets.Q_WX_PRIVATE_KEY }}
+        Q_WX_KEY_ID: ${{ secrets.Q_WX_KEY_ID }}
+        Q_WX_PROJECT_ID: ${{ secrets.Q_WX_PROJECT_ID }}
+        WX_APPID: ${{ secrets.WX_APPID }}
+        WX_APP_SECRET: ${{ secrets.WX_APP_SECRET }}
+        WX_TMPL_ID: ${{ secrets.WX_TMPL_ID }}
+    - name: 'Checkout GitHub Action'
+      uses: actions/checkout@v4
+    - name: 'Setup Java Sdk'
+      uses: actions/setup-java@v4
+      with:
+        java-version: '8'
+        distribution: 'temurin'
+    - name: 'package and run'
+      shell: cd weather-push
+      run: |
+        mvn clean package
+        pwd
