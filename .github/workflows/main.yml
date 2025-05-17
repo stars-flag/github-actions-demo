@@ -21,15 +21,15 @@ jobs:
       WX_APP_SECRET: ${{ secrets.WX_APP_SECRET }}
       WX_TMPL_ID: ${{ secrets.WX_TMPL_ID }}
     steps:
-      - name: 'Checkout GitHub Action'
-        uses: actions/checkout@v4
-      - name: 'Setup Java Sdk'
-        uses: actions/setup-java@v4
-        with:
-          java-version: '8'
-          distribution: 'temurin'
-      - name: 'package and run'
-        shell: cd weather-push
-        run: |
-          mvn clean package
-          pwd
+    - name: 'Checkout GitHub Action'
+      uses: actions/checkout@v4
+    - name: 'Setup Java Sdk'
+      uses: actions/setup-java@v4
+      with:
+        java-version: '8'
+        distribution: 'temurin'
+    - name: 'package and run'
+      shell: 'cd weather-push'
+      run: |
+        mvn clean package
+        pwd
