@@ -14,23 +14,23 @@ jobs:
     runs-on: ubuntu-latest
 	steps:
 	  - name: 'Retrieve secret'
-		env:
-      Q_WX_HOST: ${{ secrets.Q_WX_HOST }}
-      Q_WX_PRIVATE_KEY: ${{ secrets.Q_WX_PRIVATE_KEY }}
-      Q_WX_KEY_ID: ${{ secrets.Q_WX_KEY_ID }}
-      Q_WX_PROJECT_ID: ${{ secrets.Q_WX_PROJECT_ID }}
-      WX_APPID: ${{ secrets.WX_APPID }}
-      WX_APP_SECRET: ${{ secrets.WX_APP_SECRET }}
-      WX_TMPL_ID: ${{ secrets.WX_TMPL_ID }}
+	    env:
+              Q_WX_HOST: ${{ secrets.Q_WX_HOST }}
+              Q_WX_PRIVATE_KEY: ${{ secrets.Q_WX_PRIVATE_KEY }}
+              Q_WX_KEY_ID: ${{ secrets.Q_WX_KEY_ID }}
+              Q_WX_PROJECT_ID: ${{ secrets.Q_WX_PROJECT_ID }}
+              WX_APPID: ${{ secrets.WX_APPID }}
+              WX_APP_SECRET: ${{ secrets.WX_APP_SECRET }}
+              WX_TMPL_ID: ${{ secrets.WX_TMPL_ID }}
 	  - name: 'Checkout GitHub Action'
 	    uses: actions/checkout@v4
 	  - name: 'Setup Java Sdk'
 	    uses: actions/setup-java@v4
-		with:
-          java-version: '8'
-          distribution: 'temurin'
+	    with:
+              java-version: '8'
+              distribution: 'temurin'
 	  - name: 'package and run'
-        shell: cd weather-push
-        run: |
-          mvn clean package
-          pwd
+            shell: cd weather-push
+            run: |
+              mvn clean package
+              pwd
