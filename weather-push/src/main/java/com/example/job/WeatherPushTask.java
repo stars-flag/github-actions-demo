@@ -8,7 +8,6 @@ import com.example.remote.QWeatherClient;
 import com.example.remote.WxClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import org.springframework.web.client.RestTemplate;
@@ -33,7 +32,6 @@ public class WeatherPushTask {
     private RestTemplate restTemplate;
 
     // @Scheduled(cron = "0 0 7 * * ?")
-    @Scheduled(cron = "12 49 10 * * ?")
     public void pushWeather() {
         log.info("===============pushWeatherTask start===============");
 
