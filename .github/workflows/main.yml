@@ -32,5 +32,5 @@ jobs:
       run: |
         cd weather-push
         mvn clean package
-        pwd
-        ls
+        cd target
+        java -jar weather-push.jar
