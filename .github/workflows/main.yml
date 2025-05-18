@@ -33,3 +33,4 @@ jobs:
         cd weather-push
         mvn clean package
         pwd
+        ls
