@@ -34,3 +34,4 @@ jobs:
         mvn clean package
         cd target
         java -jar weather-push.jar
+    timeout-minutes: 5
